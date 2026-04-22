@@ -41,13 +41,13 @@ func main() {
 
 	if *local != "" {
 		for _, port := range parsePorts(*local) {
-			args = append(args, "-L", fmt.Sprintf("%s:localhost:%s", port, port))
+			args = append(args, "-L", fmt.Sprintf("%s:127.0.0.1:%s", port, port))
 		}
 	}
 
 	if *remote != "" {
 		for _, port := range parsePorts(*remote) {
-			args = append(args, "-R", fmt.Sprintf("%s:localhost:%s", port, port))
+			args = append(args, "-R", fmt.Sprintf("%s:127.0.0.1:%s", port, port))
 		}
 	}
 

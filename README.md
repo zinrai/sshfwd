@@ -5,7 +5,7 @@ SSH port forwarding wrapper that simplifies specifying multiple local and remote
 Instead of writing:
 
 ```
-ssh -L 8080:localhost:8080 -L 3000:localhost:3000 -R 5432:localhost:5432 -p 2222 user@host
+ssh -L 8080:127.0.0.1:8080 -L 3000:127.0.0.1:3000 -R 5432:127.0.0.1:5432 -p 2222 user@host
 ```
 
 You can write:
@@ -20,8 +20,8 @@ sshfwd -local 8080,3000 -remote 5432 -- -p 2222 user@host
 sshfwd -local <ports> -remote <ports> -- [ssh options] [user@]hostname
 ```
 
-- `-local` : Comma-separated list of ports for local forwarding (`-L port:localhost:port`)
-- `-remote` : Comma-separated list of ports for remote forwarding (`-R port:localhost:port`)
+- `-local` : Comma-separated list of ports for local forwarding (`-L port:127.0.0.1:port`)
+- `-remote` : Comma-separated list of ports for remote forwarding (`-R port:127.0.0.1:port`)
 - `--` : Separator between sshfwd options and ssh options
 - Everything after `--` is passed directly to `ssh`
 
