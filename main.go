@@ -24,7 +24,13 @@ func parsePorts(s string) []string {
 func main() {
 	local := flag.String("local", "", "Local port forwarding: comma-separated list of ports")
 	remote := flag.String("remote", "", "Remote port forwarding: comma-separated list of ports")
+	showVersion := flag.Bool("version", false, "Print version information and exit")
 	flag.Parse()
+
+	if *showVersion {
+		printVersion()
+		os.Exit(0)
+	}
 
 	if *local == "" && *remote == "" {
 		fmt.Fprintln(os.Stderr, "Error: at least one of -local or -remote must be specified")
